@@ -6,19 +6,34 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Calculator</title>
+  <title>Javascript Calculator using HTML, CSS and JavaScript</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
   <style>
-    body{
+    body {
       font-family: 'Montserrat', sans-serif;
+      margin: 0;
+      padding: 0;
     }
-    .container{
-        text-align: center;
-        margin-top:23px
+    .container {
+      text-align: center;
+      margin-top: 23px
     }
-    span#sumTotal{
+    .calculator {
+      background: rgb(80, 174, 57);
+      background: linear-gradient(180deg, rgba(80, 174, 57, 1) 0%, rgba(46, 108, 187, 1) 100%);
+      width: 100%;
+      max-width: 400px;
+      padding: 0;
+      border-radius: 0;
+      display: inline-block;
+    }
+    h1 {
+      font-size: 15px;
+      font-weight: 500;
+    }
+    span#sumTotal {
       position: relative;
       display: block;
       width: 100%;
@@ -28,31 +43,32 @@
       text-align: right;
     }
 
-    table{
-        margin: 0;
-        width: 100%;
-        max-width: 400px;
-        box-sizing: border-box;
+    table {
+      margin: 0;
+      width: 100%;
+      max-width: 400px;
+      box-sizing: border-box;
     }
 
     textarea:focus,
     textarea:active,
     button:focus,
-    button:active{
+    button:active {
       outline: none;
       box-shadow: none;
     }
+
     button:focus,
-    button:active{
-      background-color: rgba(255,255,255,0.39);
+    button:active {
+      background-color: rgba(255, 255, 255, 0.39);
     }
 
-    p#sumTotal{
+    p#sumTotal {
       height: 50px;
       font-size: 33px;
     }
 
-    p#input-digits{
+    p#input-digits {
       display: -ms-flexbox !important;
       display: flex !important;
       -ms-flex-align: end !important;
@@ -60,66 +76,79 @@
       -ms-flex-pack: end !important;
       justify-content: flex-end !important;
     }
-    p{
+
+    p {
       resize: none;
-        border-radius: 0;
-        border: 0 solid transparent;
-        font-size: 25px;
-        font-weight: 400;
-        height: 150px;
-        margin: 0;
-        width: 100%;
-        background-color: transparent;
-        color: #ffffff;
-        text-align: right;
-        padding: 15px;
-        box-sizing: border-box;
+      border-radius: 0;
+      border: 0 solid transparent;
+      font-size: 25px;
+      font-weight: 400;
+      height: 150px;
+      margin: 0;
+      width: 100%;
+      background-color: transparent;
+      color: #ffffff;
+      text-align: right;
+      padding: 15px;
+      box-sizing: border-box;
     }
 
-    button{
-        border-radius: 0px;
-        border-width: 1px 1px 0 0;
-        border-style: solid;
-        border-color: rgba(255,255,255,0.3);
-        color: #ffffff;
-        font-size: 25px;
-        font-weight: 300;
-        background: transparent;
-        width: 98px;
-        height: 125px;
-        margin: -2px;
-        box-sizing: border-box;
-    }
-    table tr td:first-child button{
-      border-left-width:  1px;
+    button {
+      border-radius: 0px;
+      border-width: 1px 1px 0 0;
+      border-style: solid;
+      border-color: rgba(255, 255, 255, 0.3);
+      color: #ffffff;
+      font-size: 25px;
+      font-weight: 300;
+      background: transparent;
+      width: 25%;
+      height: 8rem;
+      margin: -2px;
+      box-sizing: border-box;
     }
 
-    table tr:first-child td:first-child button{
-      border-top-width:  1px;
-    }
-    table tr:first-child td:first-child button{
-      border-top-width:  1px;
-    }
-    table tr:last-child td button{
-      border-bottom-width:  1px;
+    table tr span:first-child button {
+      border-left-width: 1px;
     }
 
-    .calculator{
-       /*  #2e6cbb #50ae39 */
-        background: rgb(80,174,57);
-        background: linear-gradient(180deg, rgba(80,174,57,1) 0%, rgba(46,108,187,1) 100%);
-        width: 100%;
-        max-width: 400px;
-        padding: 0;
-        border-radius: 0;
-        display: inline-block;
+    table tr:first-child span:first-child button {
+      border-top-width: 1px;
+    }
+
+    table tr:first-child span:first-child button {
+      border-top-width: 1px;
+    }
+
+    table tr:last-child span button {
+      border-bottom-width: 1px;
+    }
+
+    /*********************************/
+    /*       Responsive Design      */
+    /*********************************/
+
+
+    @media(max-width:1199px) {
+      button {
+        height: 6rem;
+      }
+    }
+
+
+    @media(max-width:992px) {
+      button {
+        height: 7rem;
+      }
+    }
+
+    @media(max-width:767px) {
+      button {
+        height: 5rem;
+      }
 
     }
 
-    h1{
-        font-size: 28px;
-        font-family: 'Courier New', Courier, monospace;
-    }
   </style>
 </head>
 
@@ -130,38 +159,38 @@
   <div class="calculator">
       <p id="sumTotal"></p>
       <p id="input-digits"></p>
-      <table>
-          <tr>
-            <td><button>CE</button></td>
-            <td><button>%</button></td>
-            <td><button>)</button></td>
-            <td><button>Del</button></td>
-          </tr>
-          <tr>
-            <td><button>7</button></td>
-            <td><button>8</button></td>
-            <td><button>9</button></td>
-            <td><button>=</button></td>
-          </tr>
-          <tr>
-            <td><button>4</button></td>
-            <td><button>5</button></td>
-            <td><button>6</button></td>
-            <td><button>X</button></td>
-          </tr>
-          <tr>
-            <td><button>1</button></td>
-            <td><button>2</button></td>
-            <td><button>3</button></td>
-            <td><button>-</button></td>
-          </tr>
-          <tr>
-            <td><button>0</button></td>
-            <td><button>.</button></td>
-            <td><button>(</button></td>
-            <td><button>+</button></td>
-          </tr>
-      </table>
+      <<div>
+        <div>
+          <span><button>CE</button></span>
+          <span><button>%</button></span>
+          <span><button>)</button></span>
+          <span><button>Del</button></span>
+        </div>
+        <div>
+          <span><button>7</button></span>
+          <span><button>8</button></span>
+          <span><button>9</button></span>
+          <span><button>=</button></span>
+        </div>
+        <div>
+          <span><button>4</button></span>
+          <span><button>5</button></span>
+          <span><button>6</button></span>
+          <span><button>X</button></span>
+        </div>
+        <div>
+          <span><button>1</button></span>
+          <span><button>2</button></span>
+          <span><button>3</button></span>
+          <span><button>-</button></span>
+        </div>
+        <div>
+          <span><button>0</button></span>
+          <span><button>.</button></span>
+          <span><button>(</button></span>
+          <span><button>+</button></span>
+        </div>
+      </div>
   </div>
 </div>
   <script src="calculator.js"></script>
