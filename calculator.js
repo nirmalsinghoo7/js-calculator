@@ -15,18 +15,27 @@ for(item of buttons) {
       screenValue += buttonText;
       inputDigits.innerHTML = screenValue;
     }
+
     else if(buttonText == 'CE'){
       screenValue = "";
+      sumTotal.innerHTML = "";
       inputDigits.innerHTML = screenValue;
     }
     else if(buttonText == 'Del'){
       screenValue = popLastChar(screenValue);
-      inputDigits.innerText = screenValue;
+			inputDigits.innerText = screenValue;
     }
+    else if(buttonText == '÷'){
+      buttonText = '/';
+      screenValue += buttonText;
+			inputDigits.innerText = screenValue;
+    }
+
     else{
       screenValue += buttonText;
       inputDigits.innerHTML = screenValue;
       sumTotal.innerHTML = eval(screenValue);
     }
+
   });
 }
