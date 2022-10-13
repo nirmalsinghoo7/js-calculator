@@ -20,17 +20,13 @@ for(item of buttons) {
       inputDigits.innerHTML = screenValue;
     }
     else if(buttonText == 'Del'){
-
       screenValue = popLastChar(screenValue);
-			inputDigits.innerText = screenValue;
-    }
-
-    else if(buttonText =='='){
-      sumTotal.innerHTML = eval(screenValue);
+      inputDigits.innerText = screenValue;
     }
     else{
       screenValue += buttonText;
       inputDigits.innerHTML = screenValue;
+      sumTotal.innerHTML = eval(screenValue);
     }
   });
 }
